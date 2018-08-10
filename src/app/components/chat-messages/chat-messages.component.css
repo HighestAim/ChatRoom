@@ -1,0 +1,49 @@
+.clients-list > div {
+  margin-bottom: 20px;
+}
+
+.message-controls>div {
+  margin: 20px 0;
+}
+
+.message-area-content {
+  height: 74vh;
+  display: flex;
+  align-items: flex-end;
+}
+
+.message-area-content>div{
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.message-area {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+}
+
+.my-message {
+  background-color: #66a0ff;
+  color: #ffffff;
+  border-radius: 5px;
+  align-self: flex-end;
+  border: 5px solid #66a0ff;
+  box-sizing: content-box;
+}
+
+.friend-message {
+  background-color: #e2e2e2;
+  align-self: flex-start;
+  box-sizing: content-box;
+  border-radius: 5px;
+  border: 5px solid #e2e2e2;
+}
+
+.message-area > div{
+  height: fit-content;
+}

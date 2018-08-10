@@ -1,0 +1,20 @@
+.header-icon {
+  font-size: 50px;
+  padding: 0 10px;
+}
+
+.header-logo {
+  display: flex;
+}
+
+.header-content {
+  display: flex;
+  padding: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-section {
+  display: flex;
+  justify-content: flex-end;
+}

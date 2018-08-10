@@ -1,0 +1,12 @@
+.popup-message {
+  background-color: #00000030;
+  display: block;
+}
+
+.disableFirstButton{
+  display: none;
+}
+
+.disableSecondButton{
+  display: none;
+}

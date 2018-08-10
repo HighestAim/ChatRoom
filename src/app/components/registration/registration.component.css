@@ -1,0 +1,11 @@
+.registration-form {
+  display:flex;
+  flex-direction: column;
+  margin:0 auto;
+  width:50%;
+  align-items: center;
+}
+
+.registration-from div{
+  margin-bottom: 15px;
+}

@@ -1,0 +1,17 @@
+<div class="chat-room-content">
+  <div class="chat-room-nav">
+    <div class="chat-room-nav-content">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Add Chat Room</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" [(ngModel)]="this.newChatRoomName" aria-describedby="emailHelp" placeholder="Enter Chat Room Name">
+        <small id="emailHelp" class="form-text text-muted">Add chat room for private chatting with friends.</small>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="addChatRoom(this.newChatRoomName)">Add</button>
+    </div>
+  </div>
+  <div class="chat-room-list">
+    <div class="list-group">
+      <a *ngFor="let chatRoom of chatRooms" href="/messages/{{chatRoom.id}}"  [class.active]="chatRoom === selectedChatRoom" class="list-group-item list-group-item-action" (click)="onSelectRoom(chatRoom)">{{chatRoom.name}}</a>
+    </div>
+  </div>
+</div>

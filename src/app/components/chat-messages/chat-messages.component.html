@@ -1,0 +1,24 @@
+<div class="messages-content row">
+  <div class="clients-list col-md-4">
+    <div class="list-group">
+      <a *ngFor="let chatRoom of chatRooms" href="/messages/{{chatRoom.id}}" [class.active]="chatRoom === selectedChatRoom" class="list-group-item list-group-item-action" (click)="onSelectRoom(chatRoom)">{{chatRoom.name}}</a>
+    </div>
+  </div>
+  <div class="message-box col-md-8">
+    <div class="message-area-content">
+      <div>
+        <div class="message-area">
+          <p *ngFor="let message of messages" [ngClass]="{'my-message': message.userId === this.userService.signedUser.id, 'friend-message': message.userId !== this.userService.signedUser.id}" class="my-message">{{message.userName + ': ' + message.messageText}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="message-controls">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Type Message!" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
