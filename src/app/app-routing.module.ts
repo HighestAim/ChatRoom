@@ -6,7 +6,7 @@ import { ChatMessagesComponent } from './components/chat-messages/chat-messages.
 import { RegistrationComponent } from './components/registration/registration.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/messages', pathMatch: 'full' },
+  { path: '', redirectTo: '/rooms', pathMatch: 'full' },
   { path: 'rooms', component: ChatRoomsComponent },
   { path: 'messages/:id', component: ChatMessagesComponent },
 ];

@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  domain: 'http://localhost:5000/api/',
-  wsDomain: 'http://localhost:5000',
+  domain: 'http://10.25.65.127:5000/api/',
+  wsDomain: 'ws://10.25.65.127:5000',
 };

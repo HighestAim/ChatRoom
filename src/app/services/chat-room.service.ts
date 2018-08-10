@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import IResponseModel from '../models/IResponseModel';
 import IChatRoomModel from '../models/IChatRoomModel';
 import { UsersService } from './users.service';
+import IMessageModel from '../models/IMessageModel';
 // import { Headers, RequestOptions } from '@angular/http';
 
 @Injectable()

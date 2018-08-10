@@ -5,6 +5,7 @@
   <title>ChatRoom</title>
   <base href="/">
   <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,4 +15,63 @@
 <body>
   <app-root></app-root>
 </body>
+<script>
+  $(function () {
+    //var protocol = location.protocol === "https:" ? "wss:" : "ws:";
+    var wsUri = "ws://10.25.65.127:5000";
+    var socket = new WebSocket(wsUri);
+    socket.onopen = e => {
+      console.log("socket opened", e);
+    };
+
+    socket.onclose = function (e) {
+      console.log("socket closed", e);
+      socket = new WebSocket(wsUri);
+    };
+
+    socket.onmessage = function (e) {
+console.log('onMessage');
+      const signedUserId = $('.signedUserData').first().val();
+      const data = JSON.parse(e.data);
+      const className = +signedUserId === data.UserId ? 'my-message' : 'friend-message';
+      const messageText = data.UserName + ': ' + data.MessageText;
+
+      $('.messagesList').first().append('<p _ngcontent-c4 class="' + className + '">' + messageText + '</p>');
+    };
+
+    socket.onerror = function (e) {
+      console.log('onError');
+      console.error(e.data);
+    };
+
+    var sendButtonEvent = function (e) {
+//      if (e.which != 13) {
+//        return;
+//      }
+      console.log('onClick');
+
+      var messageText = $('.messageField').first().val();
+      if(!messageText) {
+        return;
+      }
+      e.preventDefault();
+      const signedUserId = $('.signedUserData').first().val();
+      const selectedRoomId = $('.selectedRoom').first().val();
+
+      var mess = {
+        userId: Number(signedUserId),
+        chatRoomId: Number(selectedRoomId),
+        messageText: messageText
+      };
+
+      var message = JSON.stringify(mess);
+
+      socket.send(message);
+      $('.messageField').first().val('');
+    }
+
+    $('.sendButton').first().click(sendButtonEvent);
+
+  });
+</script>
 </html>

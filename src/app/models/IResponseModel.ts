@@ -1,5 +1,3 @@
-import { EResponseStatus } from '../enums/EResponseStatus';
-
 interface IResponseModel<T> {
   status?: number;
   errorMessage?: string;

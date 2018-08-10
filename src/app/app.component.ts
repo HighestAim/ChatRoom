@@ -12,6 +12,9 @@ export class AppComponent implements OnInit {
   public localStorageData: any = [];
 
   constructor(private usersService: UsersService, private localStorageService: LocalStorageService) {
+    // chatService.messages.subscribe(msg => {
+    //   console.log("Response from websocket: " + msg);
+    // });
   }
 
   ngOnInit() {

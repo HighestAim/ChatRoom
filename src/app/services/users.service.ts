@@ -25,6 +25,7 @@ export class UsersService {
 
   registerUser(data: IRegistrationModel): Observable<IResponseModel<null>> {
     const url = `${this.urlPrefix}register`;
+    console.log(url);
     return this.http.post<IResponseModel<null>>(url, data, httpOptions)
       .pipe(
         catchError(this.handleError())

@@ -7,6 +7,9 @@ import { popupTitle } from '../../constants/popup-title.constant';
 import { EResponseStatus } from '../../enums/EResponseStatus';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../services/users.service';
+import IMessageSendModel from '../../models/IMessageSendModel';
+import IMessageModel from '../../models/IMessageModel';
+
 
 @Component({
   selector: 'app-chat-messages',
@@ -20,13 +23,32 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
   selectedChatRoom: IChatRoomModel;
   messages: IMessageModel[];
   routedChatRoomId?: number;
+  inputedMessage: string;
 
   constructor(private popupMessageService: PopupMessagesService, private chatRoomService: ChatRoomService,
-              private route: ActivatedRoute, public userService: UsersService) { }
+              private route: ActivatedRoute, public userService: UsersService) {
+    // chatService.messages.subscribe(msg => {
+    //   console.log("Response from websocket: " + msg);
+    // });
+  }
 
   ngOnInit() {
     this.routedChatRoomId = +this.route.snapshot.paramMap.get('id');
     this.getChatRoomAndMessages();
+  }
+
+  sendMessage(message: string) {
+    if (message) {
+      const sendMessage: IMessageSendModel = {
+        chatRoomId: this.routedChatRoomId,
+        userId: this.userService.signedUser.id,
+        messageText: message,
+        sentDate: Date.now()
+      };
+      console.log('send Message', sendMessage);
+
+      // this.chatService.messages.next(sendMessage);
+    }
   }
 
   onSelectRoom(chatRoom: IChatRoomModel): void {

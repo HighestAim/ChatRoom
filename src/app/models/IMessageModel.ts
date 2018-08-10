@@ -6,3 +6,5 @@ interface IMessageModel {
   messageText: string;
   sentDate: Date | string;
 }
+
+export default IMessageModel;
