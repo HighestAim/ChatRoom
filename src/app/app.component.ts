@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { UsersService } from './services/users.service';
 import { LocalStorageService } from './services/local-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { LocalStorageService } from './services/local-storage.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private usersService: UsersService, private localStorageService: LocalStorageService) {
+  constructor(public router: Router, private usersService: UsersService, private localStorageService: LocalStorageService) {
   }
 
   ngOnInit() {

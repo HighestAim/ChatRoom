@@ -19,6 +19,7 @@
       <div class="input-group mb-3">
         <input type="text" (keyup.enter)="onEnter(messageText)"
                [(ngModel)]="messageText"
+               maxlength="150"
                class="form-control"
                placeholder="Input message here!"
                aria-label="Type Message!"

@@ -31,6 +31,7 @@ export class ChatRoomsComponent implements OnInit, OnDestroy {
   addChatRoom() {
     if (!this.newChatRoomName) {
       this.popupMessageService.show(popupTitle.ERROR, 'Chat room name is wrong.');
+      return;
     }
     this.subscriptions.push(
       this.chatRoomService.addChatRoom(this.newChatRoomName).subscribe(response => {

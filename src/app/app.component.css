@@ -7,6 +7,16 @@
   display: flex;
 }
 
+.header-logo a{
+  text-decoration: none;
+  color: #000000;
+}
+
+.header-logo a:hover{
+  text-decoration: none;
+  color: #000000;
+}
+
 .header-content {
   display: flex;
   padding: 30px;
