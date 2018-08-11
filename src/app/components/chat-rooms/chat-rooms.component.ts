@@ -34,7 +34,6 @@ export class ChatRoomsComponent implements OnInit, OnDestroy {
     }
     this.subscriptions.push(
       this.chatRoomService.addChatRoom(this.newChatRoomName).subscribe(response => {
-        console.log(response);
         if (!response || !response.status || response.status !== EResponseStatus.Ok || response.errorMessage) {
           this.popupMessageService.show(popupTitle.ERROR, 'Can\'t add chat room.');
         } else {
@@ -49,7 +48,6 @@ export class ChatRoomsComponent implements OnInit, OnDestroy {
   getChatRooms(): void {
     this.subscriptions.push(
       this.chatRoomService.getChatRooms().subscribe(response => {
-        console.log(response);
         if (!response || !response.status || response.status !== EResponseStatus.Ok || response.errorMessage) {
           this.popupMessageService.show(popupTitle.ERROR, 'Can\'t get chat rooms.');
         } else {

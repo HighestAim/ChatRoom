@@ -1,7 +1,6 @@
 import { Component, Injectable, OnDestroy, OnInit } from '@angular/core';
 import IRegistrationModel from '../../models/IRegistrationModel';
 import {UsersService} from '../../services/users.service';
-import IResponseModel from '../../models/IResponseModel';
 import { EResponseStatus } from '../../enums/EResponseStatus';
 import { PopupMessagesService } from '../../services/popup-messages.service';
 import { popupTitle } from '../../constants/popup-title.constant';
@@ -42,6 +41,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
         }
       })
     );
+    } else {
+      this.popupMessageService.show(popupTitle.INFO, 'Fill empty fields.');
     }
   }
 

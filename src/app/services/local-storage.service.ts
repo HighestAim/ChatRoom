@@ -11,13 +11,11 @@ export class LocalStorageService {
   }
 
   saveInLocalStorage(key, val): void {
-    console.log('recieved = key:' + key + 'value:' + val);
     this.storage.set(key, val);
     this.localStorageData[key] = this.storage.get(key);
   }
 
   getFromLocalStorage(key): any {
-    console.log('recieved = key:' + key);
     this.localStorageData[key] = this.storage.get(key);
     return this.localStorageData;
   }

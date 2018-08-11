@@ -15,6 +15,8 @@ import { ClickStopPropagation } from './directives/disableClick';
 import { StorageServiceModule} from 'angular-webstorage-service';
 import { ChatRoomService } from './services/chat-room.service';
 import { UsersService } from './services/users.service';
+import { WebsocketService } from './services/websocket.service';
+import { ChatService } from './services/chat.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,7 @@ import { UsersService } from './services/users.service';
     HttpClientModule,
     StorageServiceModule
   ],
-  providers: [ ChatRoomService, UsersService],
+  providers: [ WebsocketService, ChatService, ChatRoomService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

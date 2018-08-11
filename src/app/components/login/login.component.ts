@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import ILoginModel from '../../models/ILoginModel';
-import { Router } from '@angular/router';
 import { PopupMessagesService } from '../../services/popup-messages.service';
 import { UsersService } from '../../services/users.service';
 import { EResponseStatus } from '../../enums/EResponseStatus';
@@ -28,17 +27,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login(): void {
     if (this.loginData.userName && this.loginData.password) {
-      console.log(this.loginData);
       this.subscriptions.push(
       this.userService.loginUser(this.loginData).subscribe(response => {
-        console.log(response);
         if (!response || !response.status || response.status !== EResponseStatus.Ok || response.errorMessage) {
-          console.log('login failed');
           this.popupMessageService.show(popupTitle.ERROR, 'Login failed.');
         } else {
           this.localStorageService.saveInLocalStorage(this.userService.storageKey, response.result);
           this.userService.signedUser = response.result;
-          console.log('login success!');
         }
       }));
     } else {

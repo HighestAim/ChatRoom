@@ -1,4 +1,4 @@
-<div *ngIf="popupMessagesService.message" class="popup-message modal" tabindex="-1" role="dialog" (click)="popupMessagesService.hide()">
+<div *ngIf="popupMessagesService.message" class="popup-message modal" tabindex="-1" role="dialog" (click)="popupMessagesService.hide()" (keyup.enter)="popupMessagesService.hide()">
   <div class="modal-dialog" role="document">
     <div class="modal-content" click-stop-propagation>
       <div class="modal-header">

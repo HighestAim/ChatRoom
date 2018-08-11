@@ -7,8 +7,8 @@ import { popupTitle } from '../../constants/popup-title.constant';
 import { EResponseStatus } from '../../enums/EResponseStatus';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../services/users.service';
-import IMessageSendModel from '../../models/IMessageSendModel';
 import IMessageModel from '../../models/IMessageModel';
+import { ChatService } from '../../services/chat.service';
 
 
 @Component({
@@ -23,13 +23,13 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
   selectedChatRoom: IChatRoomModel;
   messages: IMessageModel[];
   routedChatRoomId?: number;
-  inputedMessage: string;
+  messageText = '';
 
   constructor(private popupMessageService: PopupMessagesService, private chatRoomService: ChatRoomService,
-              private route: ActivatedRoute, public userService: UsersService) {
-    // chatService.messages.subscribe(msg => {
-    //   console.log("Response from websocket: " + msg);
-    // });
+              private route: ActivatedRoute, public userService: UsersService, private chatService: ChatService) {
+    this.subscriptions.push(chatService.messages.subscribe(msg => {
+      this.messages.push(msg);
+    }));
   }
 
   ngOnInit() {
@@ -39,16 +39,20 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
 
   sendMessage(message: string) {
     if (message) {
-      const sendMessage: IMessageSendModel = {
+      const sendMessage: IMessageModel = {
         chatRoomId: this.routedChatRoomId,
         userId: this.userService.signedUser.id,
         messageText: message,
-        sentDate: Date.now()
+        userName: this.userService.signedUser.firstName
       };
-      console.log('send Message', sendMessage);
-
-      // this.chatService.messages.next(sendMessage);
+      this.chatService.messages.next(sendMessage);
+      this.messageText = '';
     }
+  }
+
+
+  onEnter(message: string) {
+    this.sendMessage(message);
   }
 
   onSelectRoom(chatRoom: IChatRoomModel): void {
@@ -59,7 +63,6 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
   getChatRoomAndMessages(): void {
     this.subscriptions.push(
       this.chatRoomService.getChatRooms().subscribe(response => {
-        console.log(response);
         if (!response || !response.status || response.status !== EResponseStatus.Ok || response.errorMessage) {
           this.popupMessageService.show(popupTitle.ERROR, 'Can\'t get chat rooms.');
         } else {

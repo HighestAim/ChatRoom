@@ -6,7 +6,7 @@ import IResponseModel from '../models/IResponseModel';
 import { environment } from '../../environments/environment.prod';
 import { catchError } from 'rxjs/internal/operators';
 import ILoginModel from '../models/ILoginModel';
-import IUserAuthentificationModel from '../models/IUserAutenthificationModel';
+import IUserAuthenticationModel from '../models/IUserAuthenticationModel';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,7 +16,7 @@ const httpOptions = {
 export class UsersService {
 
   private urlPrefix = 'Users/';
-  public signedUser: IUserAuthentificationModel;
+  public signedUser: IUserAuthenticationModel;
   public storageKey = 'authData';
 
   constructor(private http: HttpClient) {
@@ -25,16 +25,15 @@ export class UsersService {
 
   registerUser(data: IRegistrationModel): Observable<IResponseModel<null>> {
     const url = `${this.urlPrefix}register`;
-    console.log(url);
     return this.http.post<IResponseModel<null>>(url, data, httpOptions)
       .pipe(
         catchError(this.handleError())
       );
   }
 
-  loginUser(data: ILoginModel): Observable<IResponseModel<IUserAuthentificationModel>> {
+  loginUser(data: ILoginModel): Observable<IResponseModel<IUserAuthenticationModel>> {
     const url = `${this.urlPrefix}authenticate`;
-    return this.http.post<IResponseModel<IUserAuthentificationModel>>(url, data, httpOptions)
+    return this.http.post<IResponseModel<IUserAuthenticationModel>>(url, data, httpOptions)
       .pipe(
         catchError(this.handleError())
       );
@@ -43,13 +42,7 @@ export class UsersService {
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
+      console.error(error);
       return of(result as T);
     };
   }

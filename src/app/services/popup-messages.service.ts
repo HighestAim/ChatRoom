@@ -13,11 +13,9 @@ export class PopupMessagesService {
   show(title = popupTitle.INFO, message: string) {
     this.message = message;
     this.title = title;
-    console.log('show');
   }
 
   hide() {
     this.message = '';
-    console.log('hide');
   }
 }

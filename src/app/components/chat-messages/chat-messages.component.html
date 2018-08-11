@@ -7,7 +7,7 @@
   <div class="message-box col-md-8">
     <div class="message-area-content">
       <div>
-        <div class="messagesList message-area">
+        <div class="message-area">
           <p *ngFor="let message of messages"
              [ngClass]="{'my-message': message.userId === this.userService.signedUser.id, 'friend-message': message.userId !== this.userService.signedUser.id}">
             {{message.userName + ': ' + message.messageText}}
@@ -17,11 +17,16 @@
     </div>
     <div class="message-controls">
       <div class="input-group mb-3">
-        <input type="hidden" class="signedUserData" value="{{this.userService.signedUser.id}}">
-        <input type="hidden" class="selectedRoom" value="{{routedChatRoomId}}">
-        <input type="text" [(ngModel)]="inputedMessage" class="messageField form-control" placeholder="Recipient's username" aria-label="Type Message!" aria-describedby="button-addon2">
+        <input type="text" (keyup.enter)="onEnter(messageText)"
+               [(ngModel)]="messageText"
+               class="form-control"
+               placeholder="Input message here!"
+               aria-label="Type Message!"
+               aria-describedby="button-addon2">
         <div class="input-group-append">
-          <button class="sendButton btn btn-outline-secondary"  type="button" id="button-addon2">Send</button>
+          <button class="btn btn-outline-secondary"
+                  (click)="sendMessage(messageText)"
+                  type="button">Send</button>
         </div>
       </div>
     </div>

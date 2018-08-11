@@ -4,13 +4,13 @@
       <div class="input-group-prepend">
         <span class="input-group-text">Username</span>
       </div>
-      <input type="text" class="form-control" [(ngModel)]="loginData.userName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <input (keyup.enter)="login()" type="text" class="form-control" [(ngModel)]="loginData.userName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
     </div>
     <div class="input-group input-group-sm mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text">Password</span>
       </div>
-      <input type="password" class="form-control" [(ngModel)]="loginData.password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <input (keyup.enter)="login()" type="password" class="form-control" [(ngModel)]="loginData.password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
     </div>
   </div>
   <div class="buttons-group">

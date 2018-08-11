@@ -1,10 +1,9 @@
 interface IMessageModel {
-  userId: number;
-  userName: number;
+  userId?: number;
+  userName?: string;
   chatRoomId?: number;
-  chatRoomName: string;
-  messageText: string;
-  sentDate: Date | string;
+  messageText?: string;
+  sentDate?: Date | string;
 }
 
 export default IMessageModel;

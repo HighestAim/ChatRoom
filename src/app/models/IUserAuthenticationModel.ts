@@ -1,4 +1,4 @@
-interface IUserAuthentificationModel {
+interface IUserAuthenticationModel {
   id: number;
   firstName: string;
   lastName: string;
@@ -6,4 +6,4 @@ interface IUserAuthentificationModel {
   token: string;
 }
 
-export default IUserAuthentificationModel;
+export default IUserAuthenticationModel;

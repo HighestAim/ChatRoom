@@ -8,13 +8,8 @@ import { LocalStorageService } from './services/local-storage.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'chat-room';
-  public localStorageData: any = [];
 
   constructor(private usersService: UsersService, private localStorageService: LocalStorageService) {
-    // chatService.messages.subscribe(msg => {
-    //   console.log("Response from websocket: " + msg);
-    // });
   }
 
   ngOnInit() {
