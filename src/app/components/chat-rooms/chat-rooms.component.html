@@ -3,10 +3,10 @@
     <div class="chat-room-nav-content">
       <div class="form-group">
         <label for="exampleInputEmail1">Add Chat Room</label>
-        <input MAXLENGTH="49" (keyup.enter)="addChatRoom(this.newChatRoomName)" type="email" class="form-control" id="exampleInputEmail1" [(ngModel)]="this.newChatRoomName" aria-describedby="emailHelp" placeholder="Enter Chat Room Name">
+        <input MAXLENGTH="49" (keyup.enter)="addChatRoom()" type="email" class="form-control" id="exampleInputEmail1" [(ngModel)]="this.newChatRoomName" aria-describedby="emailHelp" placeholder="Enter Chat Room Name">
         <small id="emailHelp" class="form-text text-muted">Add chat room for private chatting with friends.</small>
       </div>
-      <button type="submit" class="btn btn-primary" (click)="addChatRoom(this.newChatRoomName)">Add</button>
+      <button type="submit" class="btn btn-primary" (click)="addChatRoom()">Add</button>
     </div>
   </div>
   <div class="chat-room-list">

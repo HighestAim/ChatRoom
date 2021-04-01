@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  domain: 'http://localhost:5000/api/',
-  wsDomain: 'ws://localhost:5000',
+  domain: 'http://localhost:5003/api/',
+  wsDomain: 'ws://localhost:5003',
 };
 
 /*

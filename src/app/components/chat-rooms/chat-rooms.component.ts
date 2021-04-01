@@ -18,7 +18,7 @@ export class ChatRoomsComponent implements OnInit, OnDestroy {
   selectedChatRoom: IChatRoomModel;
   newChatRoomName: string;
 
-  constructor(private popupMessageService: PopupMessagesService, private chatRoomService: ChatRoomService) { }
+  constructor(public popupMessageService: PopupMessagesService, public chatRoomService: ChatRoomService) { }
 
   ngOnInit() {
     this.getChatRooms();

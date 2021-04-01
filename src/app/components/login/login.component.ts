@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     password: ''
   };
   private subscriptions: Array<Subscription> = [];
-  constructor(private popupMessageService: PopupMessagesService, private userService: UsersService,
-                private localStorageService: LocalStorageService) {
+  constructor(public popupMessageService: PopupMessagesService, public userService: UsersService,
+                public localStorageService: LocalStorageService) {
   }
 
   ngOnInit() {
